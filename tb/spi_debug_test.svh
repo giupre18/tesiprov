@@ -14,9 +14,9 @@
 `define DBG_CAUSE_REG   15'h000C
 `define DBG_NPC_REG     15'h2000
 `define DBG_PPC_REG     15'h2004
-
-`define EVENT_UNIT_BASE_ADDR 32'h1A10_4000
-
+////////////////////////////////////////////////////////
+//`define EVENT_UNIT_BASE_ADDR 32'h1A10_4000
+`define EVENT_UNIT_BASE_ADDR 32'h9A10_4000
   task debug_mem_sw;
     input   [31:0] addr;
     input   [31:0] data;
@@ -39,7 +39,9 @@
 
     logic [31:0] addr_int;
     begin
-      addr_int = 32'h1A11_0000 + addr;
+      //////////////////////////////////////////////////////
+      addr_int = 32'h9A11_0000 + addr;
+      //addr_int = 32'h1A11_0000 + addr;
       spi_read_word(use_qspi, addr_int, data);
     end
   endtask
@@ -50,7 +52,9 @@
 
     logic [31:0] addr_int;
     begin
-      addr_int = 32'h1A11_0000 + addr;
+    ///////////////////////////////////////////////////////////////
+      //addr_int = 32'h1A11_0000 + addr;
+      addr_int = 32'h9A11_0000 + addr;
       spi_write_word(use_qspi, addr_int, data);
     end
   endtask

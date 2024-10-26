@@ -180,7 +180,7 @@ void mem_init(const int port) {
   mem_got_con = 0;
 
   mem_socket_port = port;
-
+  //printf("TEST C_FUNCTION MEM_INIT\n");
   mem_socket_open(port);
 }
 

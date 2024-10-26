@@ -11,8 +11,10 @@
 
 #include <stdio.h>
 
-int main()
-{ 
-  printf("Hello World!!!!!\n");
-  return 0;
+int main(){
+int *pi= 0xCA100000;
+*pi=5;
+printf("Ciao mondo! \n");
+printf("var=0x%p\n",pi);
+return 0;
 }

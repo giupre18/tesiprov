@@ -1,14 +1,18 @@
-typedef struct {
+/*typedef struct {
   byte we;
   int  addr;
   int  size;
 } mem_packet_t;
+*/
+//import "DPI-C"         function void mem_init(input int port);
+//import "DPI-C"         function int  mem_poll(output mem_packet_t packet, output byte buffer[1024]);
+//import "DPI-C"         function int  mem_push(input mem_packet_t packet, input byte buffer[1024]);
 
-import "DPI-C"         function void mem_init(input int port);
-import "DPI-C"         function int  mem_poll(output mem_packet_t packet, output byte buffer[1024]);
-import "DPI-C"         function int  mem_push(input mem_packet_t packet, input byte buffer[1024]);
+import "DPI-C"       function void my_dpi_function(int data);
 
-task mem_dpi;
+
+
+task my_dpi;
   input int port;
   byte buffer[1024];
   mem_packet_t packet;
@@ -19,8 +23,8 @@ task mem_dpi;
   logic [31:0] rdata_temp;
   logic [31:0] rdata_temp_arr[];
   begin
-    //$display("TEST TASK MEM_DPI");
-    mem_init(port);
+    my_dpi_function(42);
+    /*mem_init(port);
 
     while(1) begin
       // wait for 100 cycles between polls
@@ -134,5 +138,6 @@ task mem_dpi;
           $display("mem_push has failed");
       end
     end
+    */
   end
-endtask
+endtask : my_dpi
